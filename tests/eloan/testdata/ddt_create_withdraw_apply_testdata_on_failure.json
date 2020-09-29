@@ -1,0 +1,26 @@
+[
+  {
+    "loan_amount": 100,
+    "test_oracle": {
+      "assertIsNotNone": [],
+      "assertEqual": {
+        "status": "error",
+        "message": "不支持的提现金额",
+        "code": "200100",
+        "data": null
+      }
+    }
+  },
+  {
+    "loan_amount": 200,
+    "test_oracle": {
+      "assertIsNotNone": [],
+      "assertEqual": {
+        "status": "error",
+        "message": "不支持的提现金额",
+        "code": "200100",
+        "data": null
+      }
+    }
+  }
+]

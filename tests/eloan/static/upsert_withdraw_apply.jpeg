@@ -1,0 +1,29 @@
+[
+  {
+    "loan_amount": 100,
+    "test_oracle": {
+      "status": "error",
+      "message": "不支持的提现金额",
+      "code": "200100",
+      "data": null
+    }
+  },
+  {
+    "loan_amount": 200,
+    "test_oracle": {
+      "status": "error",
+      "message": "不支持的提现金额",
+      "code": "200100",
+      "data": null
+    }
+  },
+  {
+    "loan_amount": 6000,
+    "test_oracle": {
+      "status": "error",
+      "message": "已经存在一笔提现申请",
+      "code": "200113",
+      "data": null
+    }
+  }
+]

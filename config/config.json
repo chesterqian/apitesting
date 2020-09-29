@@ -1,0 +1,24 @@
+{
+  "test_env": "dev",
+
+  "dev": {
+    "credLimitapiHost": "http://cred-limitapi.dev.bkjk.cn",
+    "credLoanapiHost": "http://cred-loanapi.dev.bkjk.cn",
+    "creditServiceHost": "https://credit-service.test.bkjk.com",
+    "apiHost": "http://api.dev.bkjk.cn",
+    "aliceDB": {
+      "db": "alicedb",
+      "user": "alice",
+      "pw": "alice-secret",
+      "host": "10.132.0.6",
+      "port": 32781
+    },
+    "creditLoanDB": {
+      "db": "credit_loan",
+      "user": "credit_loan",
+      "pw": "oqj7K_ReZdBq1",
+      "host": "172.29.10.50",
+      "port": 3308
+    }
+  }
+}

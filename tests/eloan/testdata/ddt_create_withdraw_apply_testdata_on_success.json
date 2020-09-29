@@ -1,0 +1,13 @@
+[
+    {
+      "loan_amount": 6000,
+      "test_oracle": {
+        "assertIsNotNone": [],
+        "assertEqual": {
+          "loanAmount": 6000,
+          "applyStatus": "CREATED",
+          "uid": "213111"
+        }
+      }
+    }
+  ]

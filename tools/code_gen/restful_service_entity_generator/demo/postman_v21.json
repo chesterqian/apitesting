@@ -1,0 +1,224 @@
+{
+	"info": {
+		"_postman_id": "b2f438ad-61ee-49c6-9405-73dc4757ce7a",
+		"name": "fake rest server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get welcome test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/welcome?aaa=1&bbb=2",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"welcome"
+					],
+					"query": [
+						{
+							"key": "aaa",
+							"value": "1"
+						},
+						{
+							"key": "bbb",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get welcome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{test_rest_server_host}}/",
+					"host": [
+						"{{test_rest_server_host}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7467bf0d-9613-4d6b-8a98-ee7b1c471606",
+						"exec": [
+							"pm.environment.set(\"token\", pm.response.json().Token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"a\":1,\n\t\"b\":2\n}"
+				},
+				"url": {
+					"raw": "{{test_rest_server_host}}/token",
+					"host": [
+						"{{test_rest_server_host}}"
+					],
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post tasks",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Token",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"done\": 1,\n\t\"title\": 2\n}"
+				},
+				"url": {
+					"raw": "{{test_rest_server_host}}/tasks",
+					"host": [
+						"{{test_rest_server_host}}"
+					],
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post tasks form",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Token",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "aaa",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "bbb",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{test_rest_server_host}}/tasks_form",
+					"host": [
+						"{{test_rest_server_host}}"
+					],
+					"path": [
+						"tasks_form"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get tasks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Token",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{test_rest_server_host}}/tasks",
+					"host": [
+						"{{test_rest_server_host}}"
+					],
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "clear_all",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{test_rest_server_host}}/clear_all",
+					"host": [
+						"{{test_rest_server_host}}"
+					],
+					"path": [
+						"clear_all"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

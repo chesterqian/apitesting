@@ -1,0 +1,336 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "credit-user-api-service",
+    "license": {}
+  },
+  "host": "tester.dev.godq.cn",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "agent-controller",
+      "description": "Agent Controller"
+    },
+    {
+      "name": "contract-controller",
+      "description": "Contract Controller"
+    },
+    {
+      "name": "employee-controller",
+      "description": "Employee Controller"
+    }
+  ],
+  "paths": {
+    "/contracts": {
+      "get": {
+        "tags": [
+          "contract-controller"
+        ],
+        "summary": "queryContractsUsingGET",
+        "operationId": "queryContractsUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "a",
+            "in": "header",
+            "description": "a",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "b",
+            "in": "query",
+            "description": "b",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "c",
+            "in": "query",
+            "description": "c",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/def1"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "contract-controller"
+        ],
+        "summary": "创建合同",
+        "operationId": "createContractUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "a",
+            "in": "header",
+            "description": "a",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "b",
+            "description": "b",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/def2"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/def1"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/employee/{idNo}": {
+      "get": {
+        "tags": [
+          "employee-controller"
+        ],
+        "summary": "根据身份证号查询员工信息",
+        "operationId": "findByIdNoUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "idNo",
+            "in": "path",
+            "description": "idNo",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "UUID",
+            "in": "header",
+            "description": "UUID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "expire",
+            "in": "query",
+            "description": "expire",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "param0",
+            "description": "param0",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "param0",
+            "in": "formData",
+            "description": "param0",
+            "required": false,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/def3"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/remote/uploads": {
+      "post": {
+        "tags": [
+          "file-storage"
+        ],
+        "summary": "fileUpload",
+        "operationId": "fileUploadUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "param0",
+            "in": "formData",
+            "description": "param0",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "file"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "param1",
+            "description": "param1",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AttachmentRequest"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AttachmentResponse"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "AttachmentRequest": {
+      "type": "object",
+      "properties": {
+        "fileName": {
+          "type": "string"
+        },
+        "fileSize": {
+          "type": "string"
+        },
+        "fileType": {
+          "type": "string"
+        },
+        "md5": {
+          "type": "string"
+        }
+      },
+      "title": "AttachmentRequest"
+    },
+    "def1": {
+      "type": "object",
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "string"
+        },
+        "md5": {
+          "type": "string"
+        }
+      },
+      "title": "def1"
+    },
+    "def2": {
+      "type": "object",
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "string"
+        },
+        "md5": {
+          "type": "string"
+        }
+      },
+      "title": "def2"
+    },
+    "def3": {
+      "type": "object",
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "string"
+        },
+        "md5": {
+          "type": "string"
+        }
+      },
+      "title": "def3"
+    }
+  }
+}

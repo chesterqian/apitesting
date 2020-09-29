@@ -1,0 +1,9 @@
+*.pyc
+*.log
+.pytest*
+.idea
+build
+autotest.egg-info
+dist
+.cache/
+__pycache__

@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "8a02b9f9-3ea7-4db5-87a6-13bf3ca3196f",
+		"name": "aaaaaaaaaaaaaaa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get tasks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Token",
+						"value": "{{token}}"
+					},
+					{
+						"key": "aaa",
+						"value": "aa",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/tasks?id={{id}}&name={{name}}&aaa=aaa",
+					"host": [
+						"{{test_rest_server_host}}"
+					],
+					"path": [
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{id}}"
+						},
+						{
+							"key": "name",
+							"value": "{{name}}"
+						},
+						{
+							"key": "aaa",
+							"value": "aaa"
+						}
+					],
+					"variable": [ 
+						{ 
+							"key": "id", 
+							"value": "" 
+						} 
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get task",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Token",
+						"value": "{{token}}"
+					},
+					{
+						"key": "aaa",
+						"type": "text",
+						"value": "aa"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/task/:id?name={{name}}&aaa=aaa",
+					"host": [
+						"{{test_rest_server_host}}"
+					],
+					"path": [
+						"task",
+						"{{id}}"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{name}}"
+						},
+						{
+							"key": "aaa",
+							"value": "aaa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post tasks",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "aaa",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Token",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"done\": 1,\n\t\"title\": 2\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/tasks?aaa=aaa&id={{id}}",
+					"host": [
+						"{{test_rest_server_host}}"
+					],
+					"path": [
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "aaa",
+							"value": "aaa"
+						},
+						{
+							"key": "id",
+							"value": "{{id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
